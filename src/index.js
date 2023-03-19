@@ -1,11 +1,12 @@
 const express = require('express');
 var cors = require('cors');
-const { port } = require('./utils/config');
+const { serverPort } = require('./utils/config');
 const { createMsg, con, viewMsg } = require('./database');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+var port = serverPort || 8080;
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -22,7 +23,7 @@ app.get('/api/post', viewMsg)
 
 con()
     .then(
-        app.listen(8080, (req, res) => console.log(`connected in the 8080`))
+        app.listen(port, (req, res) => console.log(`connected in the ${port}`))
     )
     .catch(
         (err) => console.log(err)
