@@ -1,6 +1,6 @@
 const express = require('express');
 var cors = require('cors');
-const { serverPort } = require('./utils/config');
+const { serverPort, frontCLient } = require('./utils/config');
 const { createMsg, con, viewMsg } = require('./database');
 
 const app = express();
@@ -9,7 +9,7 @@ app.use(cors());
 var port = serverPort || 8080;
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Origin", frontCLient);
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
