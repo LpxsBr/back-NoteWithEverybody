@@ -22,7 +22,7 @@ app.get('/api/post', viewMsg)
 
 con()
     .then(
-        app.listen(port, (req, res) => console.log(`connected in the port ${port}`))
+        app.listen(8080, (req, res) => console.log(`connected in the 8080`))
     )
     .catch(
         (err) => console.log(err)
