@@ -1,9 +1,9 @@
 const db = require('mongoose')
-const { dbHost } = require('../utils/config')
+const { dbHost, dbName } = require('../utils/config')
 const { forms } = require('./models')
 
 module.exports = {
-    con: async () => await db.connect(dbHost),
+    con: async () => {await db.connect(dbHost, {dbName: dbName}); },
     createMsg: async (req, res) => {
         const { msg } = req.body;
         const message = new forms({ msg: msg })
