@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.json('hello!'))
 app.post('/api/post', createMsg)
 app.get('/api/post', viewMsg)
+app.get('/api/egg',(req, res)=>res.json('easter egg'))
 
 con()
     .then(
