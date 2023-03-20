@@ -5,8 +5,8 @@ const { forms } = require('./models')
 module.exports = {
     con: async () => {await db.connect(dbHost, {dbName: dbName}); },
     createMsg: async (req, res) => {
-        const { msg } = req.body;
-        const message = new forms({ msg: msg })
+        const { msg, date } = req.body;
+        const message = new forms({ msg: msg, date: date })
         try {
             message.save()
             res.status(200).json('cadastrado')
